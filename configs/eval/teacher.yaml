@@ -10,9 +10,11 @@ model:
 
 method:
   training_stage: none
-  scaffold: official_openclaw
-  scaffold_policy: fixed
   use_for_training_data_generation: true
+
+agent_runtime:
+  name: official_openclaw
+  modification: none
 
 data:
   final_test: official_are_gaia2_heldout

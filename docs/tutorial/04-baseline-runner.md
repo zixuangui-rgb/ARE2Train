@@ -1,8 +1,8 @@
-# 04 - Baseline Runner：先跑官方 OpenClaw baseline
+# 04 - Baseline Runner：先跑 baseline
 
 ## 本章目标
 
-在训练之前，先让 Qwen3-14B base checkpoint 在官方 OpenClaw scaffold 里跑通一批任务，得到 baseline。
+在训练之前，先用官方 OpenClaw 运行 Qwen3-14B base checkpoint，得到 baseline。
 
 baseline 是后续所有提升的参照物。没有 baseline，就不知道训练是否真的有效。
 
@@ -16,9 +16,7 @@ baseline 就是“不训练模型”的初始表现。
 Qwen3-14B base checkpoint
 ```
 
-默认评测环境是官方 OpenClaw scaffold。裸的 Qwen3-14B 不能作为正式 agent baseline，因为没有 OpenClaw scaffold，它不会真正执行工具，也不会修改环境或保存 trace。
-
-这里的官方 OpenClaw scaffold 是固定外壳。它把用户请求交给模型，解析模型想调用什么工具，执行工具，再把工具返回交回模型。
+默认评测环境是官方 OpenClaw / 官方 agent。本项目不修改 agent，只替换模型 checkpoint。
 
 本项目主线只比较模型 checkpoint：
 
@@ -29,7 +27,7 @@ preference checkpoint
 RLVR checkpoint
 ```
 
-这些 checkpoint 都必须放进同一个官方 OpenClaw scaffold 里评测。这样后面如果分数提升，变量就是模型本身，而不是外面的 agent 流程变了。
+这些 checkpoint 都必须放进同一个官方 agent 里评测。这样后面如果分数提升，变量就是模型本身，而不是 agent 变了。
 
 ## 我们要做什么
 

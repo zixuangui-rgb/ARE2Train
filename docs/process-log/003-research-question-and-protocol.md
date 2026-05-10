@@ -32,10 +32,8 @@
 - 自建 synthetic scenarios 用于训练。
 - 自建 validation scenarios 用于开发调试。
 - 官方 held-out tasks 不进入训练、调参或 checkpoint 选择。
-- 主实验固定官方 OpenClaw / 官方 agent scaffold，只替换模型 checkpoint。
-- 裸模型不作为正式 agent baseline，只能作为工具调用格式 sanity check。
-- 教程和术语表需要解释 agent scaffold，避免初学者误以为本项目要改 agent 外壳。
-- 人读的文档里将官方 OpenClaw scaffold 写成默认评测环境，不在每个 checkpoint 对比项里重复。
+- 主实验固定官方 OpenClaw / 官方 agent，不对 agent 做任何更改，只替换模型 checkpoint。
+- 人读的文档里只说明“不改 agent”，不展开 agent 外层流程细节。
 
 新增文件：
 

@@ -10,7 +10,7 @@
 - 哪些 task type 提升最大？
 - 哪些错误减少了？
 - 成本和延迟是否可接受？
-- 在固定官方 OpenClaw scaffold 的前提下，提升来自 SFT、preference 还是 RLVR？
+- 在不改官方 agent 的前提下，提升来自 SFT、preference 还是 RLVR？
 
 ## 主要评测指标
 
@@ -28,7 +28,7 @@ tokens per success
 
 ## 推荐对比
 
-默认评测环境：官方 OpenClaw scaffold。
+默认评测环境：官方 OpenClaw / 官方 agent。
 
 ```text
 Qwen3-14B base checkpoint
@@ -75,7 +75,7 @@ ablation 是拆掉某个模块，看效果变化。
 ## 常见坑
 
 - 不同模型跑不同任务集合。
-- 不同 checkpoint 使用了不同 agent scaffold。
+- 不同 checkpoint 使用了不同版本的官方 agent。
 - 只报告最好一次结果。
 - 没有记录失败案例。
 - 没有成本和延迟评测指标。

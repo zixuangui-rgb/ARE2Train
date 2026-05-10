@@ -2,7 +2,7 @@
 # 这个文件先固定评测意图，runner 实现后再接入实际运行逻辑。
 
 name: baseline
-description: 使用官方 OpenClaw scaffold 评测 Qwen3-14B base checkpoint。
+description: 使用官方 OpenClaw 评测 Qwen3-14B base checkpoint。
 
 model:
   family: qwen
@@ -11,8 +11,10 @@ model:
 
 method:
   training_stage: none
-  scaffold: official_openclaw
-  scaffold_policy: fixed
+
+agent_runtime:
+  name: official_openclaw
+  modification: none
 
 data:
   final_test: official_are_gaia2_heldout

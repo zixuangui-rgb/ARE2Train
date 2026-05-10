@@ -10,9 +10,11 @@ model:
 
 method:
   training_stage: sft_plus_preference_plus_rlvr
-  scaffold: official_openclaw
-  scaffold_policy: fixed
   reward_source: verifier
+
+agent_runtime:
+  name: official_openclaw
+  modification: none
 
 data:
   final_test: official_are_gaia2_heldout

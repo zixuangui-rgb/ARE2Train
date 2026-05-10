@@ -10,11 +10,13 @@ model:
 
 method:
   training_stage: sft_plus_preference
-  scaffold: official_openclaw
-  scaffold_policy: fixed
   training_data:
     source: synthetic_scenarios
     pair_type: success_vs_failure_trajectories
+
+agent_runtime:
+  name: official_openclaw
+  modification: none
 
 data:
   final_test: official_are_gaia2_heldout

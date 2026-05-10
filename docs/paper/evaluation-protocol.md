@@ -59,16 +59,16 @@ base checkpoint
 评测路线：
 
 ```text
-固定官方 OpenClaw / 官方 agent scaffold
+固定官方 OpenClaw / 官方 agent
 -> 替换不同模型 checkpoint
 -> 比较官方 held-out 结果
 ```
 
-本项目主线只调整模型，不把 agent scaffold 作为研究变量。这里的 agent scaffold 指模型外层的执行流程，包括 prompt 组织、工具调用解析、工具执行、工具返回处理、停止条件、错误恢复和 trace 记录。
+本项目主线只调整模型，不修改官方 OpenClaw / 官方 agent。
 
 ## baseline
 
-所有对比必须使用同一套官方 OpenClaw scaffold、同一套评测任务和同一套结果记录格式。
+所有对比必须使用同一套官方 OpenClaw / 官方 agent、同一套评测任务和同一套结果记录格式。
 
 第一版比较以下模型 checkpoint：
 
@@ -77,8 +77,6 @@ base checkpoint
 - Qwen3-14B SFT + preference。
 - Qwen3-14B SFT + preference + RLVR。
 - teacher model。
-
-裸模型不作为正式 agent baseline。它没有官方 scaffold 时无法完成工具执行和环境交互，只能作为工具调用格式的辅助 sanity check。
 
 ## 评测指标
 
@@ -170,5 +168,5 @@ YYYYMMDD_method_model_split_seed
 - 训练数据：自建 synthetic scenarios 和 teacher trajectories。
 - 开发验证：自建 validation scenarios。
 - 训练方法：SFT + preference tuning + RLVR/GRPO。
-- agent scaffold：固定官方 OpenClaw / 官方 scaffold，不作为研究变量。
-- 主要 claim：在固定官方 OpenClaw scaffold 下，训练后的 Qwen3-14B checkpoints 在官方 ARE/Gaia2 held-out tasks 上获得可验证提升。
+- agent：固定官方 OpenClaw / 官方 agent，不作为研究变量。
+- 主要 claim：在不改官方 agent 的前提下，训练后的 Qwen3-14B checkpoints 在官方 ARE/Gaia2 held-out tasks 上获得可验证提升。
