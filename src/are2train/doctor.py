@@ -7,6 +7,7 @@ import json
 import os
 import platform
 import re
+import shlex
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -45,6 +46,8 @@ SECRET_ENV_NAMES = (
     "ANTHROPIC_API_KEY",
     "TEACHER_API_KEY",
 )
+
+LOCAL_ENV_FILE = ".env.local"
 
 
 @dataclass(frozen=True)
@@ -140,12 +143,17 @@ def check_secret_leaks(root: Path) -> CheckResult:
 
 
 def check_optional_environment() -> CheckResult:
-    optional = {
-        "ARE2TRAIN_OPENCLAW_HOME": os.environ.get("ARE2TRAIN_OPENCLAW_HOME"),
+    runtime = {
         "ARE2TRAIN_MODEL_ENDPOINT": os.environ.get("ARE2TRAIN_MODEL_ENDPOINT"),
+        "ARE2TRAIN_MODEL_PROVIDER": os.environ.get("ARE2TRAIN_MODEL_PROVIDER"),
+        "ARE2TRAIN_MODEL_NAME": os.environ.get("ARE2TRAIN_MODEL_NAME"),
         "ARE2TRAIN_RUNS_DIR": os.environ.get("ARE2TRAIN_RUNS_DIR"),
     }
-    missing = [name for name, value in optional.items() if not value]
+    missing = [name for name, value in runtime.items() if not value]
+    optional = {
+        "ARE2TRAIN_OPENCLAW_HOME": os.environ.get("ARE2TRAIN_OPENCLAW_HOME"),
+    }
+    optional_missing = [name for name, value in optional.items() if not value]
 
     secret_status = []
     for name in SECRET_ENV_NAMES:
@@ -153,16 +161,47 @@ def check_optional_environment() -> CheckResult:
 
     if missing:
         return _result(
-            "optional_env",
+            "runtime_env",
             "warn",
             "not set yet: " + ", ".join(missing) + "; secrets: " + ", ".join(secret_status),
         )
 
-    return _result("optional_env", "ok", "runtime env is set; secrets: " + ", ".join(secret_status))
+    message = "runtime env is set"
+    if optional_missing:
+        message += "; optional not set: " + ", ".join(optional_missing)
+    message += "; secrets: " + ", ".join(secret_status)
+    return _result("runtime_env", "ok", message)
+
+
+def load_local_env(root: Path) -> None:
+    env_path = root / LOCAL_ENV_FILE
+    if not env_path.is_file():
+        return
+
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if stripped.startswith("export "):
+            stripped = stripped[len("export ") :].strip()
+        if "=" not in stripped:
+            continue
+        key, value = stripped.split("=", 1)
+        key = key.strip()
+        if not key or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key):
+            continue
+        try:
+            parsed = shlex.split(value, posix=True)
+        except ValueError:
+            continue
+        if len(parsed) != 1:
+            continue
+        os.environ.setdefault(key, parsed[0])
 
 
 def run_checks(root: Path | None = None) -> list[CheckResult]:
     repo = (root or _repo_root()).resolve()
+    load_local_env(repo)
     return [
         check_python_version(),
         check_required_dirs(repo),

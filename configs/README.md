@@ -21,5 +21,6 @@
 
 - API key 只能通过环境变量提供，不能写进配置文件。
 - `configs/env.local.yaml` 和 `configs/env.cluster.yaml` 是本机私有配置，默认不会进入 git。
+- `.env.local` 可以保存 endpoint、model name、runs 目录等非敏感 shell 配置，默认不会进入 git。
 - 主实验不修改官方 OpenClaw / 官方 agent，只替换模型 checkpoint。
 - 重要 run 开始前，需要把实际使用的配置复制到 run 目录，作为结果复现依据。

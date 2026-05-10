@@ -217,6 +217,8 @@ cp configs/env.example.yaml configs/env.local.yaml
 
 然后在 `configs/env.local.yaml` 里填写本机路径。
 
+如果你还想让 `doctor` 自动读取本机运行参数，可以在仓库根目录创建 `.env.local`。这个文件也不进入 git，适合保存 endpoint、model name、runs 目录这类非敏感配置。
+
 注意：不要把 API key 写进这个文件。正确做法是在 shell 里设置环境变量：
 
 ```bash
