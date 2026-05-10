@@ -6,7 +6,7 @@
 
 ## 文件说明
 
-- `baseline.yaml`：Qwen3-14B base checkpoint + 官方 OpenClaw scaffold 的评测模板。
+- `baseline.yaml`：Qwen3-14B base checkpoint 的评测模板。
 - `sft.yaml`：SFT 后模型的评测模板。
 - `preference.yaml`：SFT + preference tuning 后模型的评测模板。
 - `rlvr.yaml`：SFT + preference tuning + RLVR/GRPO 后模型的评测模板。

@@ -187,7 +187,7 @@ teacher API models for trajectory generation
 ## 第一阶段里程碑
 
 1. **Baseline 复现**
-   - 用 Qwen3-14B base checkpoint + 官方 OpenClaw scaffold 跑一小批 ARE/Gaia2-compatible 任务。
+   - 在官方 OpenClaw scaffold 中运行 Qwen3-14B base checkpoint，跑一小批 ARE/Gaia2-compatible 任务。
    - 保存完整 traces 和 failure categories。
 
 2. **Mini scenario factory**

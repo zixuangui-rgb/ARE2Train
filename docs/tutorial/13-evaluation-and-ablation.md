@@ -28,12 +28,14 @@ tokens per success
 
 ## 推荐对比
 
+默认评测环境：官方 OpenClaw scaffold。
+
 ```text
-Qwen3-14B base checkpoint + 官方 OpenClaw scaffold
-SFT checkpoint + 官方 OpenClaw scaffold
-SFT + preference checkpoint + 官方 OpenClaw scaffold
-SFT + preference + RLVR checkpoint + 官方 OpenClaw scaffold
-teacher model + 官方 OpenClaw scaffold
+Qwen3-14B base checkpoint
+SFT checkpoint
+SFT + preference checkpoint
+SFT + preference + RLVR checkpoint
+teacher model
 ```
 
 ## ablation 是什么

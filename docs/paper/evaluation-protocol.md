@@ -68,15 +68,15 @@ base checkpoint
 
 ## baseline
 
-第一版使用以下对比：
-
-- Qwen3-14B base checkpoint + 官方 OpenClaw scaffold。
-- Qwen3-14B SFT checkpoint + 官方 OpenClaw scaffold。
-- Qwen3-14B SFT + preference checkpoint + 官方 OpenClaw scaffold。
-- Qwen3-14B SFT + preference + RLVR checkpoint + 官方 OpenClaw scaffold。
-- teacher model + 官方 OpenClaw scaffold。
-
 所有对比必须使用同一套官方 OpenClaw scaffold、同一套评测任务和同一套结果记录格式。
+
+第一版比较以下模型 checkpoint：
+
+- Qwen3-14B base。
+- Qwen3-14B SFT。
+- Qwen3-14B SFT + preference。
+- Qwen3-14B SFT + preference + RLVR。
+- teacher model。
 
 裸模型不作为正式 agent baseline。它没有官方 scaffold 时无法完成工具执行和环境交互，只能作为工具调用格式的辅助 sanity check。
 

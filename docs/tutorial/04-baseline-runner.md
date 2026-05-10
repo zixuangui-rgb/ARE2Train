@@ -13,10 +13,10 @@ baseline 就是“不训练模型”的初始表现。
 例如：
 
 ```text
-Qwen3-14B base checkpoint + 官方 OpenClaw scaffold
+Qwen3-14B base checkpoint
 ```
 
-裸的 Qwen3-14B 不能作为正式 agent baseline。因为没有 OpenClaw scaffold，它不会真正执行工具，也不会修改环境或保存 trace。
+默认评测环境是官方 OpenClaw scaffold。裸的 Qwen3-14B 不能作为正式 agent baseline，因为没有 OpenClaw scaffold，它不会真正执行工具，也不会修改环境或保存 trace。
 
 这里的官方 OpenClaw scaffold 是固定外壳。它把用户请求交给模型，解析模型想调用什么工具，执行工具，再把工具返回交回模型。
 

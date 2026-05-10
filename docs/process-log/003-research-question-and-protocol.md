@@ -35,6 +35,7 @@
 - 主实验固定官方 OpenClaw / 官方 agent scaffold，只替换模型 checkpoint。
 - 裸模型不作为正式 agent baseline，只能作为工具调用格式 sanity check。
 - 教程和术语表需要解释 agent scaffold，避免初学者误以为本项目要改 agent 外壳。
+- 人读的文档里将官方 OpenClaw scaffold 写成默认评测环境，不在每个 checkpoint 对比项里重复。
 
 新增文件：
 

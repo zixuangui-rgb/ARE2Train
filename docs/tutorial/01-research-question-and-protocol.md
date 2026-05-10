@@ -122,25 +122,23 @@ verifier 检查：会议是否真的改对
 
 baseline 是比较对象。没有 baseline，就不知道模型到底有没有进步。
 
-第一版至少需要这些对比：
+第一版所有对比都固定使用官方 OpenClaw scaffold。需要比较的是这些模型 checkpoint：
 
-- Qwen3-14B base checkpoint + 官方 OpenClaw scaffold。
-- Qwen3-14B SFT checkpoint + 同一个官方 OpenClaw scaffold。
-- Qwen3-14B SFT + preference checkpoint + 同一个官方 OpenClaw scaffold。
-- Qwen3-14B SFT + preference + RLVR checkpoint + 同一个官方 OpenClaw scaffold。
-- teacher model + 同一个官方 OpenClaw scaffold，作为参考线。
-
-这里最重要的是固定同一个外壳。
+- Qwen3-14B base。
+- Qwen3-14B SFT。
+- Qwen3-14B SFT + preference。
+- Qwen3-14B SFT + preference + RLVR。
+- teacher model，作为参考线。
 
 裸的 Qwen3-14B 不能作为正式 agent baseline，因为它没有 OpenClaw scaffold 就不能真正执行工具、修改环境或保存 trace。它最多只能做工具调用格式的辅助 sanity check。
 
 主 baseline 应该是：
 
 ```text
-Qwen3-14B base checkpoint + 官方 OpenClaw scaffold
+Qwen3-14B base checkpoint
 ```
 
-后面所有训练后的 checkpoint 都放进同一个官方 OpenClaw scaffold 里评测。这样变量才干净：如果分数提升，主要原因就是模型 checkpoint 变了。
+这里的官方 OpenClaw scaffold 是默认评测环境，不需要在每个对比项里重复写。后面所有训练后的 checkpoint 都放进这个相同环境里评测。这样变量才干净：如果分数提升，主要原因就是模型 checkpoint 变了。
 
 ## 评测指标
 
