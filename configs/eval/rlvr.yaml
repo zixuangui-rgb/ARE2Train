@@ -10,7 +10,8 @@ model:
 
 method:
   training_stage: sft_plus_preference_plus_rlvr
-  scaffold: base
+  scaffold: official_openclaw
+  scaffold_policy: fixed
   reward_source: verifier
 
 data:

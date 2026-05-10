@@ -34,7 +34,7 @@ ARE2Train 想进一步做成训练场：
 1. 定义研究问题和评测协议
 2. 搭建环境和仓库
 3. 理解 ARE/Gaia2/OpenClaw
-4. 跑原始模型 baseline
+4. 跑官方 OpenClaw baseline
 5. 设计 trajectory schema
 6. 保存 trace 并分析失败
 7. 生成可训练 scenarios

@@ -10,7 +10,8 @@ model:
 
 method:
   training_stage: sft
-  scaffold: base
+  scaffold: official_openclaw
+  scaffold_policy: fixed
   training_data:
     source: synthetic_scenarios
     filter: verifier_passed_trajectories

@@ -14,7 +14,7 @@
 
 模型负责生成下一步动作，agent scaffold 负责把这一步动作接到真实环境里执行。
 
-如果只改 scaffold，模型参数没有变；如果做 SFT 或 RLVR，模型本身才发生了训练变化。实验里必须区分这两种提升。
+本项目主实验固定官方 OpenClaw scaffold，不把 scaffold 改进作为研究变量。我们只替换模型 checkpoint，比较训练前后的模型表现。
 
 ## benchmark
 

@@ -10,7 +10,8 @@ model:
 
 method:
   training_stage: sft_plus_preference
-  scaffold: base
+  scaffold: official_openclaw
+  scaffold_policy: fixed
   training_data:
     source: synthetic_scenarios
     pair_type: success_vs_failure_trajectories

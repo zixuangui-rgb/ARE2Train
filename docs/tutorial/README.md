@@ -39,7 +39,7 @@
 | 01 | [01-research-question-and-protocol.md](01-research-question-and-protocol.md) | 定义研究问题、实验边界和防止 benchmark leakage |
 | 02 | [02-environment-and-repo-setup.md](02-environment-and-repo-setup.md) | 搭建代码仓库、环境和运行基础 |
 | 03 | [03-are-gaia2-primer.md](03-are-gaia2-primer.md) | 用通俗语言理解 ARE/Gaia2/OpenClaw |
-| 04 | [04-baseline-runner.md](04-baseline-runner.md) | 先跑通原始模型 baseline |
+| 04 | [04-baseline-runner.md](04-baseline-runner.md) | 先跑通官方 OpenClaw baseline |
 | 05 | [05-trajectory-schema.md](05-trajectory-schema.md) | 设计统一 trajectory / trace 数据格式 |
 | 06 | [06-trace-store-and-failure-taxonomy.md](06-trace-store-and-failure-taxonomy.md) | 保存、分析和分类失败案例 |
 | 07 | [07-scenario-factory.md](07-scenario-factory.md) | 生成可训练的 Gaia2-style scenarios |

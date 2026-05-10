@@ -10,7 +10,8 @@ model:
 
 method:
   training_stage: none
-  scaffold: teacher_agent
+  scaffold: official_openclaw
+  scaffold_policy: fixed
   use_for_training_data_generation: true
 
 data:

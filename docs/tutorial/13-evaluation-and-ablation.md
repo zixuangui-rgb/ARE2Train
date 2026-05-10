@@ -10,7 +10,7 @@
 - 哪些 task type 提升最大？
 - 哪些错误减少了？
 - 成本和延迟是否可接受？
-- 提升来自 SFT、preference、RLVR，还是只是 prompt 改了？
+- 在固定官方 OpenClaw scaffold 的前提下，提升来自 SFT、preference 还是 RLVR？
 
 ## 主要评测指标
 
@@ -29,12 +29,11 @@ tokens per success
 ## 推荐对比
 
 ```text
-原始 Qwen3-14B
-scaffold-only
-SFT
-SFT + preference
-SFT + RLVR
-SFT + preference + RLVR
+Qwen3-14B base checkpoint + 官方 OpenClaw scaffold
+SFT checkpoint + 官方 OpenClaw scaffold
+SFT + preference checkpoint + 官方 OpenClaw scaffold
+SFT + preference + RLVR checkpoint + 官方 OpenClaw scaffold
+teacher model + 官方 OpenClaw scaffold
 ```
 
 ## ablation 是什么
@@ -45,9 +44,10 @@ ablation 是拆掉某个模块，看效果变化。
 
 - 去掉 ambiguity scenarios。
 - 去掉 action-level reward。
-- 去掉 reflection memory。
 - 只用 final reward。
 - 只用 500 个 scenarios。
+- 只用 SFT，不做 preference tuning。
+- 只用 SFT + preference，不做 RLVR。
 
 ## 输入
 
@@ -73,6 +73,7 @@ ablation 是拆掉某个模块，看效果变化。
 ## 常见坑
 
 - 不同模型跑不同任务集合。
+- 不同 checkpoint 使用了不同 agent scaffold。
 - 只报告最好一次结果。
 - 没有记录失败案例。
 - 没有成本和延迟评测指标。

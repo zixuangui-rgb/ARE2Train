@@ -32,8 +32,9 @@
 - 自建 synthetic scenarios 用于训练。
 - 自建 validation scenarios 用于开发调试。
 - 官方 held-out tasks 不进入训练、调参或 checkpoint 选择。
-- baseline 需要区分 agent scaffold 提升和模型训练提升。
-- 教程和术语表需要解释 agent scaffold，避免初学者只看到术语但不知道它和模型训练的区别。
+- 主实验固定官方 OpenClaw / 官方 agent scaffold，只替换模型 checkpoint。
+- 裸模型不作为正式 agent baseline，只能作为工具调用格式 sanity check。
+- 教程和术语表需要解释 agent scaffold，避免初学者误以为本项目要改 agent 外壳。
 
 新增文件：
 
