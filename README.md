@@ -47,6 +47,26 @@ verifier，非常适合进一步变成 **agentic post-training** 的基础设施
 - **论文级评测**：必须报告 pass rate、split-wise 结果、成本、延迟、tool-call error rate、ablation 和 failure analysis。
 - **教程优先记录**：每一个实现阶段都要留下过程记录，后续整理成公开教程。
 
+## 术语规范
+
+为了和论文、代码、ARE/Gaia2、OpenClaw 等生态保持一致，核心技术术语默认保留英文，不做生硬翻译：
+
+```text
+agent
+tool use
+rollout
+trajectory
+trace
+verifier
+reward
+scenario
+benchmark
+post-training
+RLVR / GRPO
+```
+
+尤其是 `agent` 保持原文。中文文档中直接使用 `agent`。
+
 ## 系统规划
 
 ```text
