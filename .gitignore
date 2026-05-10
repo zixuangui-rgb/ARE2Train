@@ -1,0 +1,27 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local secrets and machine-specific config
+.env
+.env.*
+!.env.example
+configs/env.local.yaml
+configs/env.cluster.yaml
+
+# Experiment outputs
+runs/
+logs/
+artifacts/
+checkpoints/
+data/
+
+# Notebook checkpoints
+.ipynb_checkpoints/

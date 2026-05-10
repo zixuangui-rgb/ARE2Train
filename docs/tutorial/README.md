@@ -63,6 +63,17 @@
 - 评测配置模板：`../../configs/eval/`
 - 过程记录：`../process-log/003-research-question-and-protocol.md`
 
+### 02 - 环境与仓库搭建
+
+第 02 章已经同步产出项目文件：
+
+- Python 项目元信息：`../../pyproject.toml`
+- 环境配置模板：`../../configs/env.example.yaml`
+- 环境检查脚本：`../../scripts/doctor.py`
+- smoke test：`../../scripts/smoke_test.sh`
+- 实验目录规范：`../../experiments/README.md`
+- 过程记录：`../process-log/004-environment-and-repo-setup.md`
+
 ## 教程写作原则
 
 - 先解释“为什么”，再解释“怎么做”。

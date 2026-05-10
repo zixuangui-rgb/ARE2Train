@@ -151,6 +151,7 @@ teacher API models for trajectory generation
 
 ```text
 .
+├── pyproject.toml
 ├── README.md
 ├── docs/
 │   ├── process-log/        # 每个阶段的原始记录，后续整理成教程
@@ -162,6 +163,7 @@ teacher API models for trajectory generation
 ├── configs/                # 模型、rollout、训练、评测配置
 │   └── eval/               # baseline、SFT、preference、RLVR、teacher 评测模板
 ├── experiments/            # 实验清单和报告
+├── runs/                   # 本地实验输出，不进入 git
 └── tests/                  # 单元测试和 smoke tests
 ```
 
@@ -227,11 +229,15 @@ teacher API models for trajectory generation
 
 ## 当前状态
 
-项目已经完成初始骨架搭建，并完成第 01 章“研究问题与实验协议”的正式化：
+项目已经完成初始骨架搭建，并完成第 01-02 章的正式化：
 
 - 教程说明：`docs/tutorial/01-research-question-and-protocol.md`
+- 环境教程：`docs/tutorial/02-environment-and-repo-setup.md`
 - 正式协议：`docs/paper/evaluation-protocol.md`
 - 评测配置模板：`configs/eval/`
-- 过程记录：`docs/process-log/003-research-question-and-protocol.md`
+- 环境配置模板：`configs/env.example.yaml`
+- 环境检查脚本：`scripts/doctor.py`
+- smoke test：`scripts/smoke_test.sh`
+- 过程记录：`docs/process-log/`
 
-下一步进入第 02 章：环境和仓库设置。
+下一步进入第 03 章：用通俗语言理解 ARE/Gaia2 和官方 OpenClaw 的任务形态。
