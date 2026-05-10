@@ -45,7 +45,7 @@ action-level reward 可以给正确的中间 action 加分：
 ## 输入
 
 - scenario oracle。
-- tool call records。
+- 工具调用记录。
 - environment final state。
 - verifier result。
 
@@ -65,6 +65,6 @@ action-level reward 可以给正确的中间 action 加分：
 ## 常见坑
 
 - reward 太稀疏。
-- reward 设计鼓励多余 tool call。
-- 只给最终答案 reward，不给 state update reward。
+- reward 设计鼓励多余工具调用。
+- 只给最终答案 reward，不给状态更新 reward。
 - reward 和 verifier 逻辑不一致。

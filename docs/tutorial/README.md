@@ -45,7 +45,7 @@
 | 07 | [07-scenario-factory.md](07-scenario-factory.md) | 生成可训练的 Gaia2-style scenarios |
 | 08 | [08-verifier-and-reward.md](08-verifier-and-reward.md) | 把 verifier 变成 reward 信号 |
 | 09 | [09-teacher-trajectories.md](09-teacher-trajectories.md) | 用强模型生成 teacher trajectories |
-| 10 | [10-sft-data-and-lora.md](10-sft-data-and-lora.md) | 用 successful trajectories 做 SFT / LoRA |
+| 10 | [10-sft-data-and-lora.md](10-sft-data-and-lora.md) | 用成功的 trajectory 做 SFT / LoRA |
 | 11 | [11-preference-data-and-training.md](11-preference-data-and-training.md) | 构造 preference data 并训练 |
 | 12 | [12-rlvr-grpo.md](12-rlvr-grpo.md) | 做 verifier-based RLVR / GRPO |
 | 13 | [13-evaluation-and-ablation.md](13-evaluation-and-ablation.md) | 做 held-out evaluation 和 ablation |

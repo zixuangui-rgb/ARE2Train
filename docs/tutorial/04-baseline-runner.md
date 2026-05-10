@@ -63,11 +63,11 @@ runs/baseline_qwen3_14b_001/
 - 可以一条命令启动 baseline。
 - 中断后可以 resume。
 - 每个任务都有 trace。
-- summary 里有 pass rate、latency、tool count。
+- summary 里有 pass rate、延迟和工具调用次数。
 
 ## 常见坑
 
-- 只保存最终答案，没有保存中间 tool call。
+- 只保存最终答案，没有保存中间工具调用。
 - 失败任务没有保存错误信息。
 - runner 不能断点续跑。
 - prompt 和模型版本没有记录。

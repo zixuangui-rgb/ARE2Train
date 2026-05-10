@@ -9,21 +9,21 @@
 preference data 通常长这样：
 
 ```text
-chosen: successful trajectory
-rejected: failed trajectory
+chosen: 成功的 trajectory
+rejected: 失败的 trajectory
 ```
 
 它告诉模型：遇到同一个任务时，哪种行为更好。
 
 ## 为什么 SFT 后还需要 preference tuning
 
-SFT 教模型模仿 successful trajectory，但不一定教会它避开坏行为。
+SFT 教模型模仿成功的 trajectory，但不一定教会它避开坏行为。
 
 preference tuning 可以帮助模型学会：
 
 - 正确问澄清优于乱猜。
-- 少而准的 tool call 优于冗长乱试。
-- 正确 state update 优于只给自然语言回答。
+- 少而准的工具调用优于冗长乱试。
+- 正确更新状态优于只给自然语言回答。
 
 ## 可选方法
 
@@ -35,13 +35,13 @@ preference tuning 可以帮助模型学会：
 
 ## 输入
 
-- 同一 scenario 下的成功和失败 trajectories。
+- 同一 scenario 下成功和失败的 trajectories。
 - reward 或 verifier result。
 - SFT checkpoint。
 
 ## 输出
 
-- preference dataset。
+- preference 数据集。
 - preference-tuned checkpoint。
 - 对比评测报告。
 
@@ -49,7 +49,7 @@ preference tuning 可以帮助模型学会：
 
 - preference 数据能解释 chosen 为什么比 rejected 好。
 - 训练后 validation pass rate 不下降。
-- tool-call error rate 或 ambiguity error 有改善。
+- 工具调用错误率或 ambiguity error 有改善。
 - 与 SFT-only 做清晰对比。
 
 ## 常见坑
@@ -57,4 +57,4 @@ preference tuning 可以帮助模型学会：
 - chosen/rejected 差异不清楚。
 - 不同任务之间随意配对。
 - preference 数据只比较语言风格，不比较任务成功。
-- 训练后模型变得保守，不愿调用 tool。
+- 训练后模型变得保守，不愿调用工具。

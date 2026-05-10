@@ -6,13 +6,13 @@
 
 ## 为什么需要 teacher trajectories
 
-中小模型一开始可能不会稳定使用 tool。直接做 RL 成本高、噪声大。
+中小模型一开始可能不会稳定使用工具。直接做 RL 成本高、噪声大。
 
 更稳妥的做法是：
 
 ```text
 先让强模型尝试任务
--> 保留 successful trajectory
+-> 保留成功的 trajectory
 -> 让小模型模仿
 ```
 
@@ -24,11 +24,11 @@
 
 ## 我们要保存什么
 
-- successful trajectory。
-- failed trajectory。
+- 成功的 trajectory。
+- 失败的 trajectory。
 - verifier result。
 - reward breakdown。
-- token 和 latency。
+- token 和延迟。
 
 ## 输入
 
@@ -49,13 +49,13 @@ data/trajectories/teacher/
 ## 验收标准
 
 - 每个 scenario 采样多条 rollouts。
-- successful trajectory 通过 verifier。
-- failed trajectory 保留用于 preference 和 failure analysis。
+- 成功的 trajectory 通过 verifier。
+- 失败的 trajectory 保留用于 preference 和 failure analysis。
 - teacher prompt 和版本被记录。
 
 ## 常见坑
 
-- 不过滤 failed trajectory 就拿去 SFT。
+- 不过滤失败的 trajectory 就拿去 SFT。
 - teacher trajectory 过长，容易让小模型学会冗长低效的行为。
 - teacher 使用了测试题。
 - 没有记录 teacher 模型版本。

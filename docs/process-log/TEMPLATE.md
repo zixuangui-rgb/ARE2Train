@@ -18,7 +18,7 @@
 
 ## 环境
 
-使用的 environment、dependencies、model version、dataset version 和外部服务。
+使用的环境、依赖、模型版本、数据集版本和外部服务。
 
 ## 命令
 

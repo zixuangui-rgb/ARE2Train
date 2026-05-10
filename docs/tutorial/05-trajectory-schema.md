@@ -11,9 +11,9 @@ agent 任务不是单轮问答。一次任务通常包含：
 ```text
 用户请求
 模型思考
-tool call
+工具调用
 tool response
-environment state 变化
+环境状态变化
 最终回答
 verifier 结果
 ```
@@ -36,7 +36,7 @@ state_t -> action_t -> observation_t+1 -> reward_t
 
 ### trace
 
-更偏工程日志，记录模型输出、tool call、错误和时间等信息。
+更偏工程日志，记录模型输出、工具调用、错误和时间等信息。
 
 ## 推荐字段
 
@@ -72,12 +72,12 @@ state_t -> action_t -> observation_t+1 -> reward_t
 
 - 所有 runner 都输出同一种 schema。
 - schema 能表示成功和失败任务。
-- schema 能表示 tool-call error。
+- schema 能表示工具调用错误。
 - schema 能被训练数据转换脚本直接读取。
 
 ## 常见坑
 
-- 只保存自然语言，不保存结构化 tool calls。
+- 只保存自然语言，不保存结构化工具调用。
 - 不保存时间戳。
 - 不保存 prompt 版本。
 - reward 和 verifier 结果混在一起，难以追踪。

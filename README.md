@@ -5,18 +5,18 @@
 项目会从 **Qwen3-14B** 这类原始开源模型出发，搭建完整闭环：
 
 ```text
-scenario generation
--> rollout collection
--> trace analysis
--> verifier/action-level rewards
+生成 scenarios
+-> 收集 rollouts
+-> 分析 trace
+-> verifier / action-level reward
 -> SFT / preference tuning / RLVR
--> held-out ARE/Gaia2 evaluation
+-> held-out ARE/Gaia2 评测
 -> tutorial + paper
 ```
 
 ## 为什么做这个项目
 
-ARE/Gaia2 不只是用来测试模型的 test set。它有 tool environment、trace 和 write-action verifier，非常适合进一步变成 **agentic post-training** 的基础设施。
+ARE/Gaia2 不只是用来测试模型的测试集。它有工具环境、trace 和 write-action verifier，非常适合进一步变成 **agentic post-training** 的基础设施。
 
 这个项目想回答的问题是：
 
@@ -28,7 +28,7 @@ ARE/Gaia2 不只是用来测试模型的 test set。它有 tool environment、tr
 
 如果训练围绕以下几个核心设计展开，中小型开源模型可以在 ARE/Gaia2-style 任务上获得显著提升：
 
-1. capability-factorized scenario generation。
+1. 按能力拆分的 scenario generation。
 2. transition-level 的 rollout 记录，而不是只保存最终对话。
 3. action-level 的 verifier reward，而不是只有最终 pass/fail。
 4. reflection memory 和 multi-agent teacher trajectories。
@@ -39,19 +39,17 @@ ARE/Gaia2 不只是用来测试模型的 test set。它有 tool environment、tr
 
 - **禁止 benchmark leakage**：官方 Gaia2 任务只用于最终 held-out evaluation，不直接用于训练。
 - **verifier-first**：一个 scenario 如果不能被 verifier 自动检查，就不能作为高质量训练环境。
-- **记录一切**：prompt、tool call、tool output、environment state、reward、latency、token usage、失败类型都必须记录。
+- **记录一切**：prompt、工具调用、工具返回、环境状态、reward、延迟、token usage、失败类型都必须记录。
 - **工程可靠性**：runner 需要支持断点续跑、失败重试、版本化配置和可复现输出。
-- **满足论文要求的评测**：必须报告 pass rate、split-wise 结果、cost、latency、tool-call error rate、ablation 和 failure analysis。
+- **满足论文要求的评测**：必须报告 pass rate、split-wise 结果、成本、延迟、工具调用错误率、ablation 和 failure analysis。
 - **教程优先记录**：每一个实现阶段都要留下过程记录，后续整理成公开教程。
 
 ## 术语规范
 
-为了和论文、代码、ARE/Gaia2、OpenClaw 等生态保持一致，核心技术术语默认保留英文，不做生硬翻译：
+为了和论文、代码、ARE/Gaia2、OpenClaw 等生态保持一致，少数核心技术术语默认保留英文，不做生硬翻译：
 
 ```text
 agent
-tool use
-tool call
 rollout
 trajectory
 trace
@@ -61,23 +59,21 @@ scenario
 benchmark
 post-training
 checkpoint
-dataset
 prompt
-latency
 token usage
 RLVR / GRPO
 ```
 
-如果一个词没有稳定、自然的中文说法，就保留英文。中文文档的职责是解释概念，而不是强行翻译术语。
+正文中优先使用自然中文，例如“工具调用、工具返回、训练集、测试集、数据集、评测指标、成本、延迟、环境状态”。只有在字段名、代码接口、论文固定说法或容易歧义时，才保留英文。
 
 ## 系统规划
 
 ```text
 ARE2Train
 ├── scenario factory
-│   ├── 人工设计的 task templates
-│   ├── LLM 生成的 scenario variants
-│   ├── 程序化生成的 environment states
+│   ├── 人工设计的任务模板
+│   ├── LLM 生成的 scenario 变体
+│   ├── 程序化生成的环境状态
 │   └── 自动生成 oracle / verifier
 ├── rollout engine
 │   ├── OpenClaw / ARE adapters
@@ -86,18 +82,18 @@ ARE2Train
 │   └── 异步、可断点续跑的批量执行
 ├── trace store
 │   ├── full trajectories
-│   ├── transition-level records
-│   ├── reward annotations
+│   ├── transition-level 记录
+│   ├── reward 标注
 │   └── failure taxonomy
 ├── training pipeline
-│   ├── 基于 successful trajectories 的 SFT
-│   ├── success-vs-failure preference data
-│   ├── verifier-based RLVR / GRPO
-│   └── checkpoint evaluation
+│   ├── 基于成功的 trajectory 做 SFT
+│   ├── 成功/失败 preference data
+│   ├── 基于 verifier 的 RLVR / GRPO
+│   └── checkpoint 评测
 └── reporting
-    ├── held-out Gaia2 evaluation
+    ├── held-out Gaia2 评测
     ├── ablation 实验
-    ├── cost / latency analysis
+    ├── 成本和延迟分析
     ├── 教程材料
     └── 论文草稿
 ```
@@ -120,23 +116,23 @@ MiniMax-M2 / M2.7 as strong agent baselines
 teacher API models for trajectory generation
 ```
 
-第一阶段目标是让 Qwen3-14B 在 held-out ARE/Gaia2-style 任务上获得可衡量提升，同时降低 tool-call error，并改善 cost per success。
+第一阶段目标是让 Qwen3-14B 在 held-out ARE/Gaia2-style 任务上获得可衡量提升，同时降低工具调用错误率，并改善每次成功任务的成本。
 
-## Evaluation Metrics
+## 评测指标
 
 项目会持续记录：
 
 - overall pass rate
-- pass rate by task family
-- pass rate by Gaia2 split
-- tool-call error rate
+- 按任务族统计的 pass rate
+- 按 Gaia2 split 统计的 pass rate
+- 工具调用错误率
 - clarification accuracy
 - time-reasoning accuracy
 - dynamic-event handling accuracy
-- average number of tool calls
-- latency per task
-- token usage per successful task
-- cost per success
+- 平均工具调用次数
+- 单任务延迟
+- 每次成功任务的 token usage
+- 每次成功任务的成本
 
 ## 仓库结构
 
@@ -146,12 +142,12 @@ teacher API models for trajectory generation
 ├── docs/
 │   ├── process-log/        # 每个阶段的原始记录，后续整理成教程
 │   ├── tutorial/           # 打磨后的教程章节
-│   └── paper/              # 论文大纲、figures、tables 和 notes
+│   └── paper/              # 论文大纲、图表、实验表格和笔记
 ├── src/
 │   └── are2train/          # 项目核心代码
 ├── scripts/                # 可直接运行的 CLI 脚本
-├── configs/                # model、rollout、training、evaluation configs
-├── experiments/            # experiment manifests 和 reports
+├── configs/                # 模型、rollout、训练、评测配置
+├── experiments/            # 实验清单和报告
 └── tests/                  # 单元测试和 smoke tests
 ```
 
@@ -166,10 +162,10 @@ teacher API models for trajectory generation
 - 目标
 - 日期
 - 相关 commit 或 run ID
-- setup / environment
+- 实验和开发环境
 - 精确命令
 - 实现笔记
-- observed results
+- 观察到的结果
 - 失败和修复
 - 下一步计划
 
@@ -180,12 +176,12 @@ teacher API models for trajectory generation
    - 保存完整 traces 和 failure categories。
 
 2. **Mini scenario factory**
-   - 先构建 3 个 task families：calendar rescheduling、email extraction、ambiguity clarification。
+   - 先构建 3 个任务族：calendar rescheduling、email extraction、ambiguity clarification。
    - 生成 300-500 个可验证 scenarios。
 
-3. **Rollout and trace store**
+3. **Rollout 和 trace store**
    - 标准化 trajectory schema。
-   - 增加 transition-level export。
+   - 增加 transition-level 导出。
    - 增加 resume/retry 支持。
 
 4. **Teacher trajectory generation**
@@ -194,7 +190,7 @@ teacher API models for trajectory generation
    - 构造 SFT 和 preference data。
 
 5. **Qwen3-14B LoRA SFT**
-   - 使用 verified successful trajectories 训练。
+   - 使用通过 verifier 检查的成功的 trajectory 训练。
    - 在 held-out synthetic validation 和官方 Gaia2 tasks 上评测。
 
 6. **RLVR / GRPO**
@@ -203,14 +199,14 @@ teacher API models for trajectory generation
 
 7. **满足论文要求的评测**
    - 做 ablation 实验。
-   - 报告 cost、latency、tool-call errors、split-wise results 和 failure analysis。
+   - 报告成本、延迟、工具调用错误、split-wise 结果和 failure analysis。
 
 ## 预期贡献
 
 计划形成的论文/教程贡献包括：
 
-1. 一套可复现的 pipeline，用于把 ARE/Gaia2-style benchmark 转化为 post-training environment。
-2. 一种面向 personal-assistant agents 的 capability-factorized scenario generation 方法。
+1. 一套可复现的 pipeline，用于把 ARE/Gaia2-style benchmark 转化为可训练环境。
+2. 一种面向 personal-assistant agents 的按能力拆分的 scenario generation 方法。
 3. 一套面向 agentic RL 的 transition-level trace 和 verifier reward schema。
 4. 一组关于 SFT、preference tuning、RLVR 在中小型开源模型上的实证研究。
 5. 一份关于可用于真实工程的 agentic RL infrastructure 实战教程。

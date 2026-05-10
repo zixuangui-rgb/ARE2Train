@@ -12,18 +12,18 @@
 - 成本和延迟是否可接受？
 - 提升来自 SFT、preference、RLVR，还是只是 prompt 改了？
 
-## 主要 metrics
+## 主要评测指标
 
 ```text
 overall pass rate
 split-wise pass rate
 scenario-family pass rate
-tool-call error rate
+工具调用错误率
 clarification accuracy
 time-reasoning accuracy
-latency per task
+单任务延迟
 tokens per success
-cost per success
+每次成功任务的成本
 ```
 
 ## 推荐对比
@@ -61,7 +61,7 @@ ablation 是拆掉某个模块，看效果变化。
 - evaluation report。
 - ablation table。
 - failure analysis。
-- paper figures。
+- 论文图表。
 
 ## 验收标准
 
@@ -75,4 +75,4 @@ ablation 是拆掉某个模块，看效果变化。
 - 不同模型跑不同任务集合。
 - 只报告最好一次结果。
 - 没有记录失败案例。
-- 没有 cost 和 latency metrics。
+- 没有成本和延迟评测指标。
