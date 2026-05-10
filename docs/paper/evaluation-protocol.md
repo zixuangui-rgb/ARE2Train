@@ -58,6 +58,8 @@ Qwen3-14B
 
 agent scaffold 的改动必须单独记录，不能和模型训练效果混在一起报告。
 
+这里的 agent scaffold 指模型外层的执行流程，包括 prompt 组织、工具调用解析、工具执行、工具返回处理、停止条件、错误恢复和 trace 记录。
+
 ## baseline
 
 第一版使用以下 baseline：

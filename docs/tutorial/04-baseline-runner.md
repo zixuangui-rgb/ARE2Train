@@ -16,6 +16,15 @@ baseline 就是“不做训练、不做特殊优化”的初始表现。
 Qwen3-14B + 初始 prompt + OpenClaw/ReAct loop
 ```
 
+这里的 `prompt + OpenClaw/ReAct loop` 就属于 agent scaffold。
+
+可以把它理解成模型外面的操作流程：它把用户请求交给模型，解析模型想调用什么工具，执行工具，再把工具返回交回模型。模型负责“想下一步做什么”，scaffold 负责“把这一步真的跑起来”。
+
+baseline runner 要记录 scaffold 版本，因为后面如果分数提升了，我们要知道提升来自哪里：
+
+- 是模型经过训练后更强了。
+- 还是 scaffold 更会组织工具调用了。
+
 ## 我们要做什么
 
 - 写一个 batch runner。
