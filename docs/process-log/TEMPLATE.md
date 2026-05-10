@@ -18,7 +18,7 @@
 
 ## 环境
 
-使用的环境、依赖、模型版本、数据集版本和外部服务。
+使用的 environment、dependencies、model version、dataset version 和外部服务。
 
 ## 命令
 
@@ -32,7 +32,7 @@
 
 ## 结果
 
-定量和定性结果。
+quantitative results 和 qualitative observations。
 
 ## 失败和修复
 

@@ -24,6 +24,6 @@
 - 尽可能记录精确命令。
 - 链接到 configs、commits、run folders 和 result files。
 - 不要只记录成功结果；失败和修复也是教程的一部分。
-- 区分观察结果和主观解释。
+- 区分 observation 和主观解释。
 - 不要把私有 API key、账号凭证、未公开数据写进日志。
-- 核心技术术语保留英文，例如 `agent`、`rollout`、`trajectory`、`verifier`、`reward`、`scenario`，不要做不自然的中文替换。
+- 核心技术术语保留英文，例如 `agent`、`tool call`、`rollout`、`trajectory`、`trace`、`verifier`、`reward`、`scenario`、`checkpoint`、`token usage`，不要做不自然的中文替换。

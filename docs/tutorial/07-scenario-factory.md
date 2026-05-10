@@ -15,8 +15,8 @@
 一个 scenario 包含：
 
 - 用户请求。
-- 初始环境状态。
-- 可用工具。
+- 初始 environment state。
+- 可用 tool。
 - 期望结果。
 - oracle actions 或 verifier。
 
@@ -27,12 +27,12 @@
 ```text
 人设计任务模板
 -> LLM 生成自然语言变体
--> 程序生成环境状态
+-> 程序生成 environment state
 -> 程序生成 oracle / verifier
 -> 自动 sanity check
 ```
 
-## 第一批任务族
+## 第一批 task family
 
 ```text
 calendar_rescheduling
@@ -60,16 +60,15 @@ data/scenarios/
 
 ## 验收标准
 
-- 每个 scenario 都能自动验证。
+- 每个 scenario 都能被 verifier 自动检查。
 - 每个 scenario 有唯一正确目标。
 - scenario 难度有 easy / medium / hard。
 - scenario 覆盖多个 failure modes。
 
 ## 常见坑
 
-- 只生成自然语言，不生成环境状态。
+- 只生成自然语言，不生成 environment state。
 - scenario 无法验证。
 - 任务太简单，baseline 已经全对。
 - 任务太难，所有模型都失败。
-- 训练集和测试集分布完全不一致。
-
+- training set 和 test set 分布完全不一致。

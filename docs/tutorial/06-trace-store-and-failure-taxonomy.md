@@ -13,7 +13,7 @@
 - 没有理解用户意图。
 - 找错联系人。
 - 时间转换错。
-- 工具参数填错。
+- tool-call parameters 填错。
 - 没有处理动态事件。
 - 应该问澄清却直接猜。
 
@@ -50,7 +50,7 @@ runtime_error
 ## 输出
 
 - failure summary。
-- 按任务类型统计的错误分布。
+- 按 task type 统计的错误分布。
 - 典型 bad cases。
 
 ## 验收标准
@@ -66,4 +66,3 @@ runtime_error
 - failure_type 太粗，无法指导下一步。
 - failure_type 太细，导致分析不可用。
 - 没有把 bad case 和原始 trace 链接起来。
-

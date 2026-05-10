@@ -6,7 +6,7 @@
 
 ## agent
 
-能根据目标采取行动的模型系统。它不只是生成文字，还可能调用工具、读取环境、修改状态、等待反馈。
+能根据目标采取行动的模型系统。它不只是生成文字，还可能调用 tool、读取环境、修改状态、等待反馈。
 
 ## benchmark
 
@@ -14,11 +14,11 @@
 
 ## training environment
 
-用于训练模型的环境。它不只是打分，还能提供轨迹、反馈和 reward。
+用于训练模型的环境。它不只是打分，还能提供 trajectory、反馈和 reward。
 
 ## scenario
 
-一个完整任务场景，包括用户请求、初始状态、可用工具和验证标准。
+一个完整任务场景，包括用户请求、初始状态、可用 tool 和 verifier rule。
 
 ## rollout
 
@@ -26,7 +26,7 @@
 
 ## trajectory
 
-一次 rollout 的完整记录，包含每一步状态、动作、观察和结果。
+一次 rollout 的完整记录，包含每一步 state、action、observation 和结果。
 
 ## trace
 
@@ -42,7 +42,7 @@
 
 ## RLVR
 
-Reinforcement Learning from Verifiable Rewards。使用可自动验证的 reward 做强化学习。
+Reinforcement Learning from Verifiable Rewards。使用 verifier 可以自动检查的 reward 做强化学习。
 
 ## GRPO
 
@@ -54,11 +54,11 @@ Supervised Fine-Tuning。用正确示范训练模型模仿。
 
 ## LoRA
 
-一种高效微调方法，只训练少量新增参数，降低显存和算力需求。
+一种高效 fine-tuning 方法，只训练少量新增参数，降低显存和算力需求。
 
 ## preference data
 
-偏好数据，通常包含一条更好的回答或轨迹，以及一条较差的回答或轨迹。
+preference data 通常包含一条更好的回答或 trajectory，以及一条较差的回答或 trajectory。
 
 ## held-out evaluation
 
@@ -66,5 +66,4 @@ Supervised Fine-Tuning。用正确示范训练模型模仿。
 
 ## benchmark leakage
 
-测试题泄漏到训练过程中，导致评测结果不可信。
-
+benchmark leakage 指 test set 内容进入训练过程，导致评测结果不可信。

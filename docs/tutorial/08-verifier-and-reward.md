@@ -32,7 +32,7 @@ reward 是训练时给模型的反馈分数。
 
 如果一个任务有 20 步，最后失败了，仅仅知道失败并不够。我们还想知道哪一步错了。
 
-action-level reward 可以奖励正确的中间动作：
+action-level reward 可以给正确的中间 action 加分：
 
 ```text
 找对联系人 +0.2
@@ -58,14 +58,13 @@ action-level reward 可以奖励正确的中间动作：
 ## 验收标准
 
 - 每个任务都有 final reward。
-- 能解释 reward 来自哪些动作。
+- 能解释 reward 来自哪些 action。
 - reward 不鼓励投机行为。
 - reward 能用于 SFT 过滤、preference 构造和 RLVR。
 
 ## 常见坑
 
 - reward 太稀疏。
-- reward 设计鼓励多余工具调用。
-- 只奖励最后答案，不奖励状态修改。
+- reward 设计鼓励多余 tool call。
+- 只给最终答案 reward，不给 state update reward。
 - reward 和 verifier 逻辑不一致。
-

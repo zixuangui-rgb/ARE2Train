@@ -10,13 +10,13 @@
 
 ## 目标
 
-创建 ARE2Train 仓库结构，并定义项目方向：做一个面向工业场景和论文产出的 RL infrastructure 项目，用来提升中小型开源模型在 ARE/Gaia2-style dynamic agent tasks 上的表现。
+创建 ARE2Train 仓库结构，并定义项目方向：做一个面向真实工程和论文产出的 RL infrastructure 项目，用来提升中小型开源模型在 ARE/Gaia2-style dynamic agent tasks 上的表现。
 
 ## 背景
 
 这个项目有两个用途：
 
-1. 作为面向 Meta MSL-style agentic AI 方向的高质量申请/研究项目。
+1. 作为面向 Meta MSL-style agentic AI 方向的高质量申请项目和研究项目。
 2. 作为现代 RL 教程未来的案例，尤其对应 Agentic RL 和 RLVR 部分。
 
 ## 环境
@@ -41,7 +41,7 @@ git clone https://github.com/zixuangui-rgb/ARE2Train.git
 
 ## 实现笔记
 
-创建了初始 README 和文档目录：
+创建了初始 README 和 documentation 目录：
 
 ```text
 docs/process-log/
@@ -54,11 +54,11 @@ experiments/
 tests/
 ```
 
-后续每个主要阶段都必须写 process log。这些记录会作为最终教程的原始材料。
+后续每个主要阶段都必须写 process log。这些记录会作为最终教程的原始素材。
 
 ## 结果
 
-仓库已经有了项目章程、里程碑计划和文档记录规范。
+仓库已经有了项目定位、milestones 和文档记录规范。
 
 ## 失败和修复
 

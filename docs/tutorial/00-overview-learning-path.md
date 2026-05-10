@@ -21,12 +21,12 @@ ARE2Train 想进一步做成训练场：
 ```text
 模型尝试完成任务
 -> 系统记录每一步
--> verifier 判断哪些动作对、哪些动作错
+-> verifier 判断哪些 action 对、哪些 action 错
 -> 把这些反馈变成训练数据或 reward
 -> 训练模型变强
 ```
 
-这对工业 agent 很重要，因为真实 agent 不是只回答问题，而是要调用工具、修改状态、处理时间、澄清歧义，并且不能乱操作。
+这对真实 agent 很重要，因为 agent 不是只回答问题，而是要调用 tool、修改状态、处理时间、澄清歧义，并且不能乱操作。
 
 ## 完整流程
 
@@ -44,7 +44,7 @@ ARE2Train 想进一步做成训练场：
 11. 做 preference tuning
 12. 做 RLVR / GRPO
 13. 做 held-out evaluation 和 ablation
-14. 工业化系统
+14. 工程化和稳定性
 15. 整理论文和教程
 ```
 
@@ -89,4 +89,3 @@ ARE2Train 想进一步做成训练场：
 - 为什么要记录 trajectory？
 - 为什么 verifier 是训练中的关键？
 - 完整项目大概要分成哪些阶段？
-
