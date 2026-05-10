@@ -74,6 +74,13 @@
 - 实验目录规范：`../../experiments/README.md`
 - 过程记录：`../process-log/004-environment-and-repo-setup.md`
 
+### 03 - ARE/Gaia2/OpenClaw 入门
+
+第 03 章已经同步产出项目文件：
+
+- ARE/Gaia2 配置模板：`../../configs/are.example.yaml`
+- 过程记录：`../process-log/006-are-gaia2-primer.md`
+
 ## 教程写作原则
 
 - 先解释“为什么”，再解释“怎么做”。

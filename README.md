@@ -259,12 +259,14 @@ teacher API models for trajectory generation
 
 - 教程说明：`docs/tutorial/01-research-question-and-protocol.md`
 - 环境教程：`docs/tutorial/02-environment-and-repo-setup.md`
+- ARE/Gaia2 入门：`docs/tutorial/03-are-gaia2-primer.md`
 - 正式协议：`docs/paper/evaluation-protocol.md`
 - 评测配置模板：`configs/eval/`
+- ARE/Gaia2 配置模板：`configs/are.example.yaml`
 - 环境配置模板：`configs/env.example.yaml`
 - 环境检查脚本：`scripts/doctor.py`
 - smoke test：`scripts/smoke_test.sh`
 - 文档导览：`docs/README.md`
 - 过程记录：`docs/process-log/`
 
-下一步进入第 03 章：用通俗语言理解 ARE/Gaia2 和官方 OpenClaw 的任务形态。
+下一步进入第 04 章：实现 baseline runner，先用官方 agent 跑少量 Gaia2 mini tasks。

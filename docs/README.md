@@ -21,7 +21,10 @@
 5. `tutorial/02-environment-and-repo-setup.md`
    - 再搭建最小工程环境，运行 doctor 和 smoke test。
 
-6. `paper/evaluation-protocol.md`
+6. `tutorial/03-are-gaia2-primer.md`
+   - 理解 ARE、Gaia2、官方 agent、scenario、trace 和 verifier 的关系。
+
+7. `paper/evaluation-protocol.md`
    - 需要写论文或设计正式实验时，回到这里看正式协议。
 
 ## 目录说明

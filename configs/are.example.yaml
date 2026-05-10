@@ -1,0 +1,38 @@
+# ARE/Gaia2 环境配置模板。
+# 这个文件用于帮助理解第 03 章的概念，并为第 04 章 baseline runner 做准备。
+# 它还不是完整可运行配置；真实模型 provider、endpoint 和认证信息需要在本机环境中配置。
+
+dataset:
+  hf: meta-agents-research-environments/Gaia2
+  split: validation
+  default_config: mini
+  capability_configs:
+    - mini
+    - execution
+    - search
+    - adaptability
+    - time
+    - ambiguity
+
+agent_runtime:
+  name: official_openclaw
+  cli_agent_name: default
+  modification: none
+
+runner:
+  command: are-benchmark
+  mode: run
+  smoke_config: mini
+  scenario_timeout_seconds: 300
+  max_concurrent_scenarios: 2
+  output_dir: runs/gaia2_smoke
+
+logging:
+  save_trace: true
+  save_verifier_result: true
+  save_metrics: true
+  save_failure_analysis: true
+
+notes:
+  - 主实验不修改官方 OpenClaw / 官方 agent，只替换模型 checkpoint。
+  - 第 04 章会把这个模板扩展成 baseline runner 的实际配置。

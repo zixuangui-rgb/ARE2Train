@@ -14,6 +14,7 @@
 ## 当前文件
 
 - `env.example.yaml`：本地和服务器都可以参考的环境配置模板。
+- `are.example.yaml`：ARE/Gaia2 环境和官方 agent 的配置模板。
 - `eval/`：不同 checkpoint 的评测配置模板。
 
 ## 重要规则
