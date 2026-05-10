@@ -1,0 +1,2 @@
+"""ARE2Train package."""
+
