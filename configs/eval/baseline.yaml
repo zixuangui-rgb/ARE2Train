@@ -1,0 +1,41 @@
+# Baseline 评测配置。
+# 这个文件先固定评测意图，runner 实现后再接入实际运行逻辑。
+
+name: baseline
+description: 评测未训练的基础模型和基础 agent scaffold。
+
+model:
+  family: qwen
+  name: Qwen3-14B
+  checkpoint: base
+
+method:
+  training_stage: none
+  scaffold: base
+
+data:
+  final_test: official_are_gaia2_heldout
+  development: synthetic_validation
+  training_data_allowed: false
+
+metrics:
+  primary:
+    - overall_pass_rate
+    - official_heldout_pass_rate
+  capability:
+    - pass_rate_by_task_family
+    - pass_rate_by_gaia2_split
+    - tool_call_error_rate
+    - clarification_accuracy
+    - time_reasoning_accuracy
+    - dynamic_event_handling_accuracy
+  efficiency:
+    - average_tool_calls
+    - latency_per_task
+    - token_usage_per_success
+    - cost_per_success
+
+logging:
+  save_trace: true
+  save_verifier_result: true
+  save_failure_analysis: true

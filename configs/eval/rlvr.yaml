@@ -1,0 +1,40 @@
+# RLVR / GRPO 评测配置。
+
+name: rlvr
+description: 评测经过 SFT、preference tuning 和 RLVR 的 Qwen3-14B。
+
+model:
+  family: qwen
+  name: Qwen3-14B
+  checkpoint: rlvr
+
+method:
+  training_stage: sft_plus_preference_plus_rlvr
+  scaffold: base
+  reward_source: verifier
+
+data:
+  final_test: official_are_gaia2_heldout
+  development: synthetic_validation
+  official_heldout_used_for_training: false
+
+metrics:
+  primary:
+    - overall_pass_rate
+    - official_heldout_pass_rate
+  capability:
+    - tool_call_error_rate
+    - clarification_accuracy
+    - time_reasoning_accuracy
+    - dynamic_event_handling_accuracy
+  efficiency:
+    - average_tool_calls
+    - latency_per_task
+    - token_usage_per_success
+    - cost_per_success
+
+logging:
+  save_trace: true
+  save_verifier_result: true
+  save_reward_breakdown: true
+  save_failure_analysis: true

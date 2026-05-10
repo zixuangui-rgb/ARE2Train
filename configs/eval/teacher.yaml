@@ -1,0 +1,39 @@
+# Teacher model 参考线评测配置。
+
+name: teacher
+description: 评测强 teacher model，作为参考线。
+
+model:
+  family: api_teacher
+  name: TBD
+  checkpoint: provider_default
+
+method:
+  training_stage: none
+  scaffold: teacher_agent
+  use_for_training_data_generation: true
+
+data:
+  final_test: official_are_gaia2_heldout
+  development: synthetic_validation
+  official_heldout_used_for_training: false
+
+metrics:
+  primary:
+    - overall_pass_rate
+    - official_heldout_pass_rate
+  capability:
+    - tool_call_error_rate
+    - clarification_accuracy
+    - time_reasoning_accuracy
+    - dynamic_event_handling_accuracy
+  efficiency:
+    - average_tool_calls
+    - latency_per_task
+    - token_usage_per_success
+    - cost_per_success
+
+logging:
+  save_trace: true
+  save_verifier_result: true
+  save_failure_analysis: true

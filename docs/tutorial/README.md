@@ -53,6 +53,16 @@
 | 15 | [15-paper-and-release.md](15-paper-and-release.md) | 整理论文、教程和开源发布 |
 | 16 | [16-glossary.md](16-glossary.md) | 术语表，帮助基础较弱的读者查概念 |
 
+## 已完成章节产物
+
+### 01 - 研究问题与实验协议
+
+第 01 章已经同步产出项目文件：
+
+- 正式评测协议：`../paper/evaluation-protocol.md`
+- 评测配置模板：`../../configs/eval/`
+- 过程记录：`../process-log/003-research-question-and-protocol.md`
+
 ## 教程写作原则
 
 - 先解释“为什么”，再解释“怎么做”。
