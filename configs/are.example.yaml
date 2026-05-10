@@ -23,6 +23,8 @@ runner:
   command: are-benchmark
   mode: run
   smoke_config: mini
+  model_extra_body:
+    enable_thinking: false
   scenario_timeout_seconds: 300
   max_concurrent_scenarios: 2
   output_dir: runs/gaia2_smoke
